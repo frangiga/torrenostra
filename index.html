@@ -1,1 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Torrenostra - MultiReverse ™ - GCBY22W</title>
+    <style>
+        :root {
+            --bg-radial-center: #323740;
+            --bg-radial-outer: #16181c;
+            --accent-orange: #ff7700;
+            --accent-orange-light: #ff9933;
+            --accent-orange-glow: rgba(255, 119, 0, 0.45);
+            --fluor-cyan: #00f3ff;
+            --fluor-cyan-glow: rgba(0, 243, 255, 0.6);
+            --card-bg: rgba(20, 23, 28, 0.85);
+            --text-main: #ffffff;
+        }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            height: 100dvh;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: radial-gradient(circle at 50% 30%, var(--bg-radial-center) 0%, var(--bg-radial-outer) 100%);
+            color: var(--text-main);
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            height: 100dvh;
+            padding: clamp(12px, 2.5vh, 20px) 16px;
+        }
+
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: clamp(2px, 1vh, 10px);
+        }
+
+        .multi-logo {
+            width: clamp(70px, 13vh, 100px);
+            height: clamp(70px, 13vh, 100px);
+            object-fit: contain;
+            margin-bottom: clamp(4px, 1vh, 8px);
+            -webkit-mask-image: radial-gradient(circle at center, black 38%, rgba(0,0,0,0.85) 45%, transparent 49.5%);
+            mask-image: radial-gradient(circle at center, black 38%, rgba(0,0,0,0.85) 45%, transparent 49.5%);
+            filter: drop-shadow(0 0 8px var(--accent-orange-glow));
+        }
+
+        .title-main {
+            font-size: clamp(1.1rem, 3vh, 1.35rem);
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--accent-orange);
+            text-transform: uppercase;
+            text-shadow: 0 0 10px var(--accent-orange-glow);
+            line-height: 1.1;
+        }
+
+        .gc-code {
+            font-size: clamp(1.2rem, 3vh, 1.42rem);
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #d1d5db;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            margin-top: clamp(4px, 1vh, 8px);
+        }
+
+        .display-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 119, 0, 0.6);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 350px;
+            padding: clamp(20px, 3.8vh, 30px) 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), 0 0 15px var(--accent-orange-glow), inset 0 0 12px rgba(255, 119, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: clamp(10px, 2vh, 16px);
+            margin: auto 0;
+        }
+
+        .label {
+            font-size: clamp(0.85rem, 2vh, 1rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-orange-light);
+            text-shadow: 0 0 6px var(--accent-orange-glow);
+        }
+
+        .value {
+            font-size: clamp(2.8rem, 7vh, 3.8rem);
+            font-weight: 800;
+            color: var(--fluor-cyan);
+            text-shadow: 0 0 14px var(--fluor-cyan-glow), 0 0 28px var(--fluor-cyan-glow);
+            min-height: clamp(3.5rem, 8vh, 4.5rem);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 1px;
+        }
+
+        .status-gps {
+            font-size: clamp(0.8rem, 1.8vh, 0.9rem);
+            font-weight: 500;
+            color: #94a3b8;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 350px;
+            gap: clamp(8px, 1.8vh, 14px);
+            margin-bottom: clamp(2px, 1vh, 8px);
+        }
+
+        .btn-query {
+            width: 100%;
+            padding: clamp(14px, 2vh, 17px);
+            font-size: clamp(1rem, 2.3vh, 1.15rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #ffffff;
+            background: linear-gradient(135deg, #ff8800 0%, #d95500 100%);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            cursor: pointer;
+            outline: none;
+            box-shadow: 0 6px 20px var(--accent-orange-glow);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-query:active {
+            transform: scale(0.97);
+            box-shadow: 0 2px 10px var(--accent-orange-glow);
+        }
+
+        .btn-query:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        footer {
+            font-size: clamp(0.75rem, 1.6vh, 0.82rem);
+            color: #64748b;
+            letter-spacing: 1px;
+        }
+
+        footer a {
+            color: var(--accent-orange-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: var(--fluor-cyan);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img class="multi-logo" src="https://frangiga.github.io/reverse-cache-reloaded/Multi.png" alt="Multi Cache Logo">
+            <div class="title-main">TORRENOSTRA - MULTIREVERSE ™</div>
+            <div class="gc-code">GCBY22W</div>
+        </header>
+
+        <main class="display-card">
+            <div class="label">DISTANCIA AL GZ</div>
+            <div id="distancia-display" class="value">-- m</div>
+            <div id="status-display" class="status-gps">Pulsa para consultar ubicación</div>
+        </main>
+
+        <div class="footer-section">
+            <button id="btn-consultar" class="btn-query" onclick="obtenerUbicacionGPS()">Consultar Metros</button>
+            <footer>Desarrollado por <a href="https://www.instagram.com/fran_giga/" target="_blank" rel="noopener noreferrer">fran_giga</a></footer>
+        </div>
+    </div>
+
+    <script>
+        // Coordenadas del punto de partida: N 40° 11.623′ E 0° 13.373′
+        const LAT_INICIO = 40.1937167;
+        const LON_INICIO = 0.2228833;
+
+        // Coordenadas del contenedor final: N 40° 11.849′ E 0° 13.182′
+        const LAT_FINAL = 40.1974833;
+        const LON_FINAL = 0.2197000;
+
+        // Radio para activar el juego en metros
+        const RADIO_INICIO_METROS = 10;
+
+        // Estado persistente en el dispositivo
+        let juegoIniciado = localStorage.getItem("torrenostra_multireverse_iniciado") === "true";
+        let watchId = null;
+
+        function calcularHaversine(lat1, lon1, lat2, lon2) {
+            const R = 6371000; // Radio de la Tierra en metros
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return Math.round(R * c);
+        }
+
+        function obtenerUbicacionGPS() {
+            const status = document.getElementById("status-display");
+            const btn = document.getElementById("btn-consultar");
+
+            status.innerText = "Conectando con satélites GPS...";
+            btn.disabled = true;
+
+            if (watchId !== null) {
+                navigator.geolocation.clearWatch(watchId);
+            }
+
+            if (!("geolocation" in navigator)) {
+                status.innerText = "GPS no compatible en este navegador.";
+                btn.disabled = false;
+                return;
+            }
+
+            let mejorUbicacion = null;
+            let contadorIntentos = 0;
+
+            const opcionesGPS = {
+                enableHighAccuracy: true,
+                timeout: 12000,
+                maximumAge: 0
+            };
+
+            const finalizarMedicion = (posicion) => {
+                if (watchId !== null) {
+                    navigator.geolocation.clearWatch(watchId);
+                    watchId = null;
+                }
+                btn.disabled = false;
+                procesarCoordenadas(posicion.coords.latitude, posicion.coords.longitude);
+            };
+
+            const timerFuerzaBruta = setTimeout(() => {
+                if (mejorUbicacion) {
+                    finalizarMedicion(mejorUbicacion);
+                } else {
+                    if (watchId !== null) navigator.geolocation.clearWatch(watchId);
+                    status.innerText = "Error GPS: Mala recepción de satélites.";
+                    btn.disabled = false;
+                }
+            }, 10000);
+
+            watchId = navigator.geolocation.watchPosition((posicion) => {
+                contadorIntentos++;
+                const precisionActual = Math.round(posicion.coords.accuracy);
+                status.innerText = `Calibrando GPS (Margen: ±${precisionActual}m)...`;
+
+                if (!mejorUbicacion || posicion.coords.accuracy < mejorUbicacion.coords.accuracy) {
+                    mejorUbicacion = posicion;
+                }
+
+                if (precisionActual <= 15 || contadorIntentos >= 4) {
+                    clearTimeout(timerFuerzaBruta);
+                    finalizarMedicion(mejorUbicacion);
+                }
+            },
+            (error) => {
+                clearTimeout(timerFuerzaBruta);
+                if (watchId !== null) navigator.geolocation.clearWatch(watchId);
+                btn.disabled = false;
+                switch(error.code) {
+                    case error.PERMISSION_DENIED:
+                        status.innerText = "Permiso de ubicación denegado.";
+                        break;
+                    case error.POSITION_UNAVAILABLE:
+                        status.innerText = "Ubicación no disponible. Activa el GPS.";
+                        break;
+                    case error.TIMEOUT:
+                        status.innerText = "Tiempo de espera agotado al buscar GPS.";
+                        break;
+                    default:
+                        status.innerText = "Error GPS al obtener ubicación.";
+                }
+            },
+            opcionesGPS);
+        }
+
+        function procesarCoordenadas(lat, lon) {
+            const displayMetros = document.getElementById("distancia-display");
+            const status = document.getElementById("status-display");
+
+            // 1. Verificar si el juego no se ha iniciado aún
+            if (!juegoIniciado) {
+                const distAlInicio = calcularHaversine(lat, lon, LAT_INICIO, LON_INICIO);
+                if (distAlInicio > RADIO_INICIO_METROS) {
+                    displayMetros.innerText = "---";
+                    displayMetros.style.color = "#ff4444";
+                    status.innerText = `Fuera del punto de inicio (${distAlInicio}m del inicio. Máximo 10m).`;
+                    return;
+                } else {
+                    juegoIniciado = true;
+                    localStorage.setItem("torrenostra_multireverse_iniciado", "true");
+                }
+            }
+
+            // 2. Si el juego ya está iniciado, calcular metros exactos al contenedor final
+            const metros = calcularHaversine(lat, lon, LAT_FINAL, LON_FINAL);
+
+            if (metros <= 5) {
+                displayMetros.innerText = "¡AQUÍ ES!";
+                displayMetros.style.color = "#ff7700";
+                status.innerText = "Has llegado al GZ final.";
+            } else {
+                displayMetros.innerText = `${metros} m`;
+                displayMetros.style.color = "#00f3ff";
+                status.innerText = "Ubicación confirmada.";
+            }
+        }
+    </script>
+</body>
+</html>
